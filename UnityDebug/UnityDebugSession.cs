@@ -410,7 +410,7 @@ namespace UnityDebug
             }
 
             var jObject = JObject.Parse(File.ReadAllText(pidFilePath));
-            var pid = (jObject["process_id"].ToObject<int>() % 1000);
+            var pid = jObject["process_id"].ToObject<int>();
 
             this.ConsoleLog($"UnityDebug: Found editor with PID {pid}");
 
