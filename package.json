@@ -178,6 +178,10 @@
                   "ANDROID_SERIAL": { "type": "string" }
                 },
                 "additionalProperties": { "type": "string" }
+              },
+              "dev:trace": {
+                "type": "boolean",
+                "description": "Turn on trace output from the adapter. Used for debugging the adapter itself."
               }
             }
           }

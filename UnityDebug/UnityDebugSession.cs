@@ -283,6 +283,12 @@ namespace UnityDebug
             var address = config.TryGetValue("address", out jValue) ? jValue?.Value<string>() : "127.0.0.1";
             int port = config.TryGetValue("port", out jValue) ? jValue.Value<int>() : 0;
 
+            if (config.TryGetValue("dev:trace", out jValue)) {
+                if (jValue.Value<bool>()) {
+                    this.Protocol.LogMessage += this.LogMessageToConsole;
+                }
+            }
+
             switch (platform) {
                 case null:
                 case "editor":
@@ -479,6 +485,8 @@ namespace UnityDebug
                     m_Session = null;
                 }
             }
+
+            this.Protocol.LogMessage -= this.LogMessageToConsole;
 
             this.ConsoleLog("Disconnected");
             return new DisconnectResponse();
@@ -1005,6 +1013,9 @@ namespace UnityDebug
         {
             this.Protocol.SendEvent(new OutputEvent(message + "\n") { Category = OutputEvent.CategoryValue.Console });
         }
+
+        private void LogMessageToConsole(object sender, LogEventArgs args)
+            => this.ConsoleLog($"{args.Category}: {args.Message}");
 
         ThreadInfo FindThread(int threadReference)
         {
