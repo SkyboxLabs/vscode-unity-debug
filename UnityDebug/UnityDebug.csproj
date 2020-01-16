@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net471</TargetFramework>
+    <TargetFramework>net472</TargetFramework>
     <OutputType>Exe</OutputType>
     <RootNamespace>UnityDebug</RootNamespace>
     <AssemblyName>UnityDebug</AssemblyName>
@@ -13,7 +13,7 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.VisualStudio.Shared.VsCodeDebugProtocol" Version="16.3.30820.2" />
-    <PackageReference Include="Newtonsoft.Json" Version="8.0.1"></PackageReference>
+    <PackageReference Include="Newtonsoft.Json" Version="10.0.3"></PackageReference>
   </ItemGroup>
   <ItemGroup>
       <Compile Include="..\MonoDevelop.Debugger.Soft.Unity\UnityDebuggerSession.cs">
