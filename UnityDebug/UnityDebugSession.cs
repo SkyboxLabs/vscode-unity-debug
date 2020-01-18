@@ -275,7 +275,7 @@ namespace UnityDebug
             JToken jValue;
 
             if (config.TryGetValue("__exceptionOptions", out jValue)) {
-                this.SetExceptionBreakpoints(jValue.ToObject<dynamic>());
+                this.SetExceptionBreakpoints(jValue);
             }
 
             var projectRoot = config.TryGetValue("projectRoot", out jValue) ? jValue.Value<string>() : null;
