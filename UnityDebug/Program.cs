@@ -83,8 +83,8 @@ namespace UnityDebug
 		static void RunSession(Stream inputStream, Stream outputStream)
 		{
 			Log.Write("Running session");
-			DebuggerLoggingService.CustomLogger = new CustomLogger();
 			var debugSession = new UnityDebugSession(inputStream, outputStream);
+			DebuggerLoggingService.CustomLogger = debugSession;
 			debugSession.Run();
 			Log.Write("Session Terminated");
 		}

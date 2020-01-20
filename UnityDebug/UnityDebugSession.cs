@@ -27,7 +27,7 @@ using StackFrame = Microsoft.VisualStudio.Shared.VSCodeDebugProtocol.Messages.St
 
 namespace UnityDebug
 {
-    internal class UnityDebugSession : DebugAdapterBase
+    internal class UnityDebugSession : DebugAdapterBase, ICustomLogger
     {
         readonly string[] MONO_EXTENSIONS =
         {
@@ -1099,5 +1099,26 @@ namespace UnityDebug
             => this.PathFormat == InitializeArguments.PathFormatValue.Uri
                 ? new Uri(path).AbsolutePath
                 : path;
+
+        public void LogError(string message, Exception ex)
+        {
+            this.Protocol.SendEvent(new OutputEvent($"ERR: {message}\n") {
+                Category = OutputEvent.CategoryValue.Console,
+                Data = ex,
+            });
+        }
+
+        public void LogAndShowException(string message, Exception ex)
+            => this.LogError(message, ex);
+
+        public void LogMessage(string messageFormat, params object[] args)
+        {
+            this.Protocol.SendEvent(new OutputEvent($"INFO: {string.Format(messageFormat, args)}"));
+        }
+
+        public string GetNewDebuggerLogFilename()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
