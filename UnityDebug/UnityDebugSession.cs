@@ -82,12 +82,19 @@ namespace UnityDebug
 
             m_Session.ExceptionHandler = ex =>
             {
+                // Ignore NotSuspended exceptions
+                if (ex is Mono.Debugger.Soft.VMNotSuspendedException)
+                    return true;
+
+                ConsoleLog($"SDB Exception: {ex}");
                 return true;
             };
 
             m_Session.LogWriter = (isStdErr, text) =>
             {
-                //SendOutput(isStdErr ? "stderr" : "stdout", text);
+                this.Protocol.SendEvent(new OutputEvent($"{(isStdErr ? "SDB Error" : "SDB")}: {text}") {
+                    Category = OutputEvent.CategoryValue.Console,
+                });
             };
 
             m_Session.TargetStopped += (sender, e) =>
