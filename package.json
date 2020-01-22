@@ -1,7 +1,7 @@
 {
   "name": "unity-debug",
   "displayName": "Debugger for Unity (SkyBox Labs)",
-  "version": "3.1.3",
+  "version": "3.1.4",
   "publisher": "skyboxlabs",
   "description": "Unity debugger extension with modifications by SkyBox Labs",
   "license": "MIT",
