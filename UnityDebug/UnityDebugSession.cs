@@ -508,9 +508,6 @@ namespace UnityDebug
                     m_Session.Continue();
                     m_DebuggeeExecuting = true;
                 }
-                else {
-                    this.ConsoleLog($"Did not continue: isRunning={this.m_Session?.IsRunning} exited={this.m_Session?.HasExited}");
-                }
             }
 
             return new ContinueResponse();
@@ -521,7 +518,7 @@ namespace UnityDebug
             WaitForSuspend();
             lock (m_Lock)
             {
-                if ((this.m_Session?.IsRunning ?? false) && !this.m_Session.HasExited) {
+                if (!(this.m_Session?.IsRunning ?? false) && !this.m_Session.HasExited) {
                     m_Session.NextLine();
                     m_DebuggeeExecuting = true;
                 }
@@ -535,7 +532,7 @@ namespace UnityDebug
             WaitForSuspend();
             lock (m_Lock)
             {
-                if ((this.m_Session?.IsRunning ?? false) && !this.m_Session.HasExited) {
+                if (!(this.m_Session?.IsRunning ?? false) && !this.m_Session.HasExited) {
                     m_Session.StepLine();
                     m_DebuggeeExecuting = true;
                 }
@@ -549,7 +546,7 @@ namespace UnityDebug
             WaitForSuspend();
             lock (m_Lock)
             {
-                if ((this.m_Session?.IsRunning ?? false) && !this.m_Session.HasExited) {
+                if (!(this.m_Session?.IsRunning ?? false) && !this.m_Session.HasExited) {
                     m_Session.Finish();
                     m_DebuggeeExecuting = true;
                 }
