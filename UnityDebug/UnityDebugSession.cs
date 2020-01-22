@@ -87,7 +87,7 @@ namespace UnityDebug
                     return true;
 
                 ConsoleLog($"SDB Exception: {ex}");
-                return true;
+                return false;
             };
 
             m_Session.LogWriter = (isStdErr, text) =>
