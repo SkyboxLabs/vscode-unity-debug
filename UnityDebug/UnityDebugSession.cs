@@ -73,7 +73,7 @@ namespace UnityDebug
                 EvaluationOptions = EvaluationOptions.DefaultOptions
             };
 
-            m_Session = new UnityDebuggerSession();
+            m_Session = new SoftDebuggerSession();
             m_Session.Breakpoints = new BreakpointStore();
 
             m_Catchpoints = new List<Catchpoint>();

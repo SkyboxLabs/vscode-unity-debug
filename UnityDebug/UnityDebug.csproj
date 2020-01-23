@@ -16,9 +16,6 @@
     <PackageReference Include="Newtonsoft.Json" Version="10.0.3"></PackageReference>
   </ItemGroup>
   <ItemGroup>
-      <Compile Include="..\MonoDevelop.Debugger.Soft.Unity\UnityDebuggerSession.cs">
-          <Link>MonoDevelop.Debugger.Soft.Unity\UnityDebuggerSession.cs</Link>
-      </Compile>
     <Compile Include="..\MonoDevelop.Debugger.Soft.Unity\PlayerConnection.cs">
       <Link>MonoDevelop.Debugger.Soft.Unity\PlayerConnection.cs</Link>
     </Compile>
