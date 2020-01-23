@@ -83,8 +83,11 @@ namespace UnityDebug
             m_Session.ExceptionHandler = ex =>
             {
                 // Ignore NotSuspended exceptions
-                if (ex is Mono.Debugger.Soft.VMNotSuspendedException)
-                    return true;
+                switch (ex) {
+                    case Mono.Debugger.Soft.VMNotSuspendedException notSuspended:
+                    case Mono.Debugger.Soft.VMDisconnectedException disconnected:
+                        return true;
+                }
 
                 ConsoleLog($"SDB Exception: {ex}");
                 return false;
