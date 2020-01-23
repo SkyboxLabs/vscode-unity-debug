@@ -530,6 +530,11 @@ namespace UnityDebug
             return new NextResponse();
         }
 
+        protected override SourceResponse HandleSourceRequest(SourceArguments arguments)
+        {
+            throw new ProtocolException("Source request is not supported");
+        }
+
         protected override StepInResponse HandleStepInRequest(StepInArguments arguments)
         {
             WaitForSuspend();
