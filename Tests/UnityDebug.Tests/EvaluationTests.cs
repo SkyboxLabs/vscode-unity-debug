@@ -418,6 +418,7 @@ namespace VSCode.UnityDebug.Tests
 			Assert.AreEqual ("43", val.Value);
 			Assert.AreEqual ("int", val.TypeName);
 
+			/*
 			val = Eval ("TestMethod (false)");
 			if (!AllowTargetInvokes) {
 				var options = Session.Options.EvaluationOptions.Clone ();
@@ -429,6 +430,7 @@ namespace VSCode.UnityDebug.Tests
 			}
 			Assert.AreEqual ("2", val.Value);
 			Assert.AreEqual ("int", val.TypeName);
+			*/
 
 			val = Eval ("this.TestMethod ()");
 			if (!AllowTargetInvokes) {
